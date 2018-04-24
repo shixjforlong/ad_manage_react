@@ -1,0 +1,53 @@
+@import "~antd/lib/style/themes/default.less";
+
+.touch_content {
+  .background_img();
+  overflow-y: auto;
+  min-height: 250px;
+  padding: 0px 15px;
+}
+
+.background_img() {
+  background-image: url(../../../assets/images/downloads/download-backgroundImage.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: bottom center;
+}
+
+.flex_container() {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.my_container {
+  .flex_container();
+  .flex_item1 {
+    width: 650px;
+    margin-top: 80px;
+    text-align: left;
+  }
+  .flex_item2 {
+    width: 350px;
+    margin-top: 60px;
+  }
+}
+
+.touch_title {
+  font-size: 23px;
+  text-align: left;
+  color: #3c8dbc !important;
+}
+
+.info_container {
+  .flex_container();
+  margin-top: 15px;
+  padding-right: 50px;
+}
+
+.flex_item_step {
+  text-align: center;
+  margin: 10px 0px 10px 0px;
+}

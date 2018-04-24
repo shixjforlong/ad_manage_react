@@ -1,0 +1,39 @@
+@import "~antd/lib/style/themes/default.less";
+
+.main {
+  margin-bottom: 30px;
+  width: 48%!important;
+  padding: 40px 0 0 10px;
+  height: 320px;
+
+  .operation {
+    margin-top: 15px;
+  }
+  .save {
+    margin-right: 10px;
+  }
+}
+.success,
+.warning,
+.error {
+  transition: color 0.3s;
+}
+
+.success {
+  color: @success-color;
+}
+
+.warning {
+  color: @warning-color;
+}
+
+.error {
+  color: @error-color;
+}
+.progress-pass > .progress {
+  :global {
+    .ant-progress-bg {
+      background-color: @warning-color;
+    }
+  }
+}

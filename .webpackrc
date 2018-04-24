@@ -1,0 +1,41 @@
+{
+  "entry": "./src/index.js",
+  "extraBabelPlugins": [
+    "transform-decorators-legacy",
+    "@babel/plugin-proposal-export-default-from",
+    "@babel/plugin-syntax-export-namespace-from",
+    ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true }]
+  ],
+  "env": {
+    "development": {
+      "extraBabelPlugins": [
+        "dva-hmr"
+      ]
+    }
+  },
+  "ignoreMomentLocale": true,
+  "theme": "./src/theme.js",
+  "html": {
+    "template": "./src/index.ejs"
+  },
+  "publicPath": "/",
+  "disableDynamicImport": true,
+  "hash": true,
+  "proxy": {
+    "/oauth2/**": {
+      "target": "http://svc-test.inhand.com.cn"
+    },
+    "/api/**": {
+      "target": "http://svc-test.inhand.com.cn"
+    },
+    "/ossapi/**": {
+      "target": "http://svc-test.inhand.com.cn"
+    },
+    "/api2/**": {
+      "target": "http://svc-test.inhand.com.cn"
+    },
+    "/papi/**": {
+      "target": "http://svc-test.inhand.com.cn"
+    }
+  }
+}

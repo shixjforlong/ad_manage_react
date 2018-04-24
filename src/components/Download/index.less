@@ -1,0 +1,25 @@
+@import "~antd/lib/style/themes/default.less";
+
+.flex_container() {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.info_container {
+  .flex_container();
+  margin-top: 15px;
+  padding-right: 50px;
+}
+
+.flex_item_step {
+  text-align: center;
+  margin: 10px 0px 10px 0px;
+}
+
+.my_container {
+  .flex_container();
+  flex-direction: column;
+}

@@ -1,0 +1,66 @@
+@import '~antd/lib/style/themes/default';
+@import '~antd/lib/button/style/mixin';
+@import '../../utils/utils';
+
+@btn-color: #505f79;
+@btn-bg-color: rgba(9, 30, 66, 0.04);
+@btn-bg-color-1: rgba(9, 30, 66, 0.08);
+
+:global {
+  .inline-edit {
+    margin-left: -10px;
+    position: relative;
+
+    &-button-group {
+      display: flex;
+      flex-shrink: 0;
+      right: -80px;
+      top: 0;
+      position: absolute;
+
+      .ant-btn {
+        margin-right: 5px;
+        box-shadow: 0 4px 8px -2px rgba(9, 30, 66, 0.25), 0 0 1px rgba(9, 30, 66, 0.31);
+        width: 32px;
+        z-index: 200;
+        border-width: 0;
+        .button-color(@btn-color; @btn-bg-color; @btn-bg-color);
+
+        &:hover,
+        &:focus {
+          .button-color(@btn-color; @btn-bg-color-1; @btn-bg-color-1);
+        }
+
+        &:active,
+        &.active {
+          .button-color(@primary-10; @primary-3; @primary-3);
+        }
+
+        .anticon {
+          font-size: 12px;
+          font-weight: 800;
+        }
+      }
+    }
+  }
+
+  .inline-edit-active {
+    input {
+      background-color: #fafbfc;
+    }
+  }
+
+  .inline-edit-read {
+    input.ant-input {
+      border-color: transparent;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &:hover {
+        background-color: #f4f5f7;
+        border-color: #f4f5f7;
+      }
+    }
+  }
+}

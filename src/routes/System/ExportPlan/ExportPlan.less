@@ -1,0 +1,38 @@
+@import "~antd/lib/style/themes/default.less";
+
+:global {
+  .ant-modal-wrap {
+    text-align: center;
+    white-space: nowrap;
+  }
+  .ant-modal-wrap:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    width: 0;
+  }
+  .ant-tabs-bar {
+    padding-left: 0;
+  }
+  .ant-spin-spinning {
+    max-height: none !important;
+  }
+  .ant-input-disabled {
+    background-color: white;
+    color: rgb(95, 95, 95);
+  }
+  .my-checkbox-group-wrap {
+    border: 1px solid #d2d6de;
+    padding: 5px;
+    overflow: auto;
+    max-height: 300px;
+  }
+}
+
+.myVerticalCenterModal {
+  display: inline-block;
+  vertical-align: middle;
+  top: 0;
+  text-align: left;
+}

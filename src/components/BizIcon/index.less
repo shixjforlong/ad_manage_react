@@ -1,0 +1,60 @@
+:global {
+  .iconfont {
+    font-size: 16px;
+    font-style: normal;
+  }
+  .icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
+  svg:not(:root).svg-inline--bi {
+    overflow: visible;
+  }
+  .svg-inline--bi {
+    display: inline-block;
+    font-size: inherit;
+    height: 1em;
+    overflow: visible;
+    vertical-align: -.125em;
+  }
+  .bi-layers svg.svg-inline--bi {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+  }
+  .bi-layers {
+    display: inline-block;
+    height: 1em;
+    position: relative;
+    text-align: center;
+    vertical-align: -.125em;
+    width: 1em;
+  }
+}
+
+:global(.ant-menu-inline) {
+  border-right: 0 none;
+}
+
+:global(.ant-menu-item) :global(.iconfont) {
+  min-width: 14px;
+  margin-right: 10px;
+}
+
+:global(.ant-menu-inline-collapsed) > :global(.ant-menu-item) :global(.iconfont) + span {
+  max-width: 0;
+  display: inline-block;
+  opacity: 0;
+}
+
+:global(.ant-menu-inline-collapsed-tooltip) :global(.iconfont) {
+  display: none;
+}
