@@ -109,7 +109,6 @@ export default class AddPhoneAd extends PureComponent {
           <Form.Item {...itemLayout} label="支付方式" hasFeedback required>
           {getFieldDecorator('payStyles', { initialValue: '2' })(
             <Select
-              onChange={this.onConfirmStatusChange}
               dropdownMatchSelectWidth={false}
               mode='multiple'
             >

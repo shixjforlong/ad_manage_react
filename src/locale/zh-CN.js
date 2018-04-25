@@ -55,7 +55,8 @@ module.exports = {
       wechat:"微信",
       alipay:"支付宝",
       link:"链接",
-      picture:"图片"
+      picture:"图片",
+      phoneAdDetail:"手机广告详情"
     }
   },
   management: {

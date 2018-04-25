@@ -125,6 +125,7 @@ export default class medias extends Component {
      type: 'media/remove',
      payload: {
        id: mediaId,
+       verbose: 100,
        onSuccess: () => {
          message.success('删除成功');
          this.fetchAreas({}, {});

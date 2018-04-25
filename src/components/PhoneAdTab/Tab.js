@@ -14,7 +14,14 @@ export default class Tab extends Component {
       }
 
      onConfirmTab1= (mediaInfo) => {
-         this.state.mediaInfo[0] = mediaInfo;
+       console.log(this.state);
+         if(!this.state.mediaInfo){
+           this.state.mediaInfo = [];
+           this.state.mediaInfo.push(mediaInfo);
+         }else{
+           this.state.mediaInfo[0] = mediaInfo;
+         }
+
          const { onConfirmTab } = this.props;
          onConfirmTab(this.state.mediaInfo);
      }
@@ -27,6 +34,12 @@ export default class Tab extends Component {
 
 
      render() {
+       const  {adData}= this.props;
+       if(adData){
+          this.state.mediaInfo = adData;
+       }else{
+         this.state.mediaInfo = [];
+       }
        const itemLayout = {
          labelCol: { span: 5 },
          wrapperCol: { span: 15 },
@@ -36,21 +49,22 @@ export default class Tab extends Component {
           <div className="card-container">
             <Tabs
               type="card"
-              size="small"
               tabBarStyle={{ marginBottom: 24 }}
               animated={{ inkBar: true, tabPane: false }}
               defaultActiveKey="1"
               onChange={this.tabChange}
             >
-              <TabPane tab="支付页面" key="1">
+              <TabPane tab="支付页面广告位" key="1">
                  <AdPayPage
                    onConfirmTab = {this.onConfirmTab1}
+                   adData = {this.state.mediaInfo}
                  />
               </TabPane>
 
-              <TabPane tab="支付成功(广告图片)" key="2">
+              <TabPane tab="支付成功页面广告位" key="2">
                  <AdPaySuccessPage
-                  onConfirmTab = {this.onConfirmTab2}
+                   onConfirmTab = {this.onConfirmTab2}
+                   adData = {this.state.mediaInfo}
                  />
               </TabPane>
             </Tabs>

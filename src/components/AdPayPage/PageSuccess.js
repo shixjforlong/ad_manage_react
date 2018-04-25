@@ -28,7 +28,7 @@ export default class PageSuccess extends PureComponent {
          mediaId:"",
          mediaName:"",
          imageCdnpath:"",
-         linkaddress:""
+         linkAddress:""
        }
     };
   }
@@ -74,7 +74,7 @@ export default class PageSuccess extends PureComponent {
   onBlur = (e) => { //失去焦点时获取光标所在位置
     const { onConfirmTab } = this.props;
     const value = e.target.value;
-    this.state.mediainfo.linkaddress  = value;
+    this.state.mediainfo.linkAddress  = value;
     onConfirmTab(this.state.mediainfo);
   }
   onConfirm = (selectMedia) => {
@@ -116,8 +116,13 @@ export default class PageSuccess extends PureComponent {
   }
 
   render() {
-      const { media, loading, dispatch } = this.props;
-      console.log(media);
+      const { media, loading, dispatch,adData } = this.props;
+      console.log(adData);
+      console.log(this.state.paySuccessdataSource);
+      if((this.state.paySuccessdataSource.length == 0 ) && adData && adData.length>1){
+         this.state.paySuccessdataSource.push(adData[1]);
+         this.state.mediainfo = adData[1];
+      }
       const { data,add} = media;
       const { selectedRowKeys, modalVisible } = this.state;
       const tableProps = { loading, data, dispatch };
@@ -176,7 +181,7 @@ export default class PageSuccess extends PureComponent {
                  />
             </Form.Item>
             <Form.Item {...itemcontentLayout}  hasFeedback>
-             <Input type="text" onBlur={this.onBlur.bind(this)}  defaultValue="http://"/>
+              <Input type="text" onBlur={this.onBlur.bind(this)} initialValue={this.state.paySuccessdataSource.length>0 ? this.state.paySuccessdataSource[0].linkAddress : "http://"} />
            </Form.Item>
           </Form>
           <MediaList

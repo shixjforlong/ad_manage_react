@@ -107,8 +107,12 @@ export default class Page extends PureComponent {
 
   render() {
 
-    const { media, loading, dispatch } = this.props;
+    const { media, loading, dispatch,adData } = this.props;
     console.log(media);
+
+    if((this.state.paydataSource.length == 0) && adData && adData.length>0){
+       this.state.paydataSource.push(adData[0]);
+    }
     const { data,add} = media;
     const { selectedRowKeys, modalVisible } = this.state;
     const tableProps = { loading, data, dispatch };

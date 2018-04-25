@@ -22,7 +22,6 @@ export default {
 		      });
          },
 				 *add({ payload }, { call, put }) {
-					 console.log("111111");
 		      const { onSuccess } = payload;
 		      const response = yield call(addPhoneAd, payload);
 		      const { error } = response;

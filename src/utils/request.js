@@ -89,26 +89,26 @@ export default function request(url, options, retry = true) {
   };
   const tokenItem =
     sessionStorage.getItem('token') || localStorage.getItem('token');
-  
+
   const newOptions = { ...defaultOptions, ...options };
   if(tokenItem){
     const token = JSON.parse(tokenItem).access_token;
     console.log(newOptions);
 
-    
+
     if(newOptions.params){
        newOptions.params.access_token = token;
     }
-    
+
     /* defaultOptions = {
        ...defaultOptions,
        headers: {
          Authorization: `Bearer ${token}`,
        },
      };*/
-     
+
   }
-  
+
   const method = newOptions.method.toLowerCase();
   if (method === 'post' || method === 'put') {
     newOptions.headers = {

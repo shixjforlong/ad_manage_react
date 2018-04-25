@@ -19,8 +19,9 @@ export async function updatePhoneAd(params) {
 }
 
 export async function removePhoneAd( params) {
-  return request('/api/adPhone/'+params.id, {
-    method: 'delete'
+  const resp = request('/api/adPhone/'+params.id, {
+    method: 'delete',
+    params: { verbose: 100 }
   });
   return resp;
 }

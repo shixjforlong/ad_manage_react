@@ -3,7 +3,7 @@ import { Button, Table, Tooltip,  Divider, Popconfirm } from 'antd';
 import { Link } from 'react-router-dom';
 import intl from 'react-intl-universal';
 import styles from './index.less';
-
+import PhoneAdManage from '../PhoneAdManage';
 
 export default class PhoneAdTable extends PureComponent {
   constructor(props) {
@@ -137,7 +137,15 @@ export default class PhoneAdTable extends PureComponent {
           footer={this.renderFooter}
           scroll={{ y: 300 }}
         />
-
+        {modalVisible && (
+          <PhoneAdManage
+            dispatch={this.props.dispatch}
+            visible={modalVisible}
+            onCancel={this.handleManageCancel}
+            data={this.state.manageData}
+            onConfirm={this.onConfirm}
+          />
+        )}
 
       </div>
     );

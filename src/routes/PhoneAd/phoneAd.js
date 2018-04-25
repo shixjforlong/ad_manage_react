@@ -113,6 +113,34 @@ export default class phoneAd extends Component {
       },
     });
  };
+ //删除手机广告
+ handleRemove = mediaId => {
+   this.props.dispatch({
+     type: 'phoneAd/remove',
+     payload: {
+       id: mediaId,
+       verbose: 100,
+       onSuccess: () => {
+         message.success('删除成功');
+         this.fetchAreas({}, {});
+       },
+     },
+   });
+ };
+ //修改手机广告内容
+ handleConfirm = (id, comment) => {
+   this.props.dispatch({
+     type: 'phoneAd/upates',
+     payload: {
+       id,
+       body: comment,
+       onSuccess: () => {
+         message.success('修改成功');
+         this.fetchAreas({}, {});
+       },
+     }
+   });
+ };
 
  handleStandardTableChange = pagination => {
    this.fetchAreas(pagination, this.state.searchValues);

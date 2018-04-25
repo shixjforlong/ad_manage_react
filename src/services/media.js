@@ -30,5 +30,4 @@ export async function removeMedia( params) {
   return request('/api/medias/'+params.id, {
     method: 'delete'
   });
-  return resp;
 }
