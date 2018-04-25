@@ -17,7 +17,8 @@ export default class AddPhoneAd extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      mediaList:[]
+      mediaList:[],
+      payStyle:['2','3']
     }
   }
 
@@ -107,7 +108,7 @@ export default class AddPhoneAd extends PureComponent {
           </Form.Item>
 
           <Form.Item {...itemLayout} label="支付方式" hasFeedback required>
-          {getFieldDecorator('payStyles', { initialValue: '2' })(
+          {getFieldDecorator('payStyles', { initialValue: this.state.payStyle })(
             <Select
               dropdownMatchSelectWidth={false}
               mode='multiple'
