@@ -64,7 +64,6 @@ export default class Page extends PureComponent {
   onConfirm = (selectMedia) => {
      const { onConfirmTab } = this.props;
      this.setState({ paydataSource: selectMedia });
-    // this.state.paydataSource = selectMedia;
      const mediaInfo={
        adIndex:"0",
        mediaId:selectMedia[0]._id,

@@ -12,6 +12,7 @@ import MediaList from '../../components/MediaList/list'
   media,
   loading: loading.effects['media/getMedias'],
 }))
+@Form.create()
 export default class PageSuccess extends PureComponent {
   constructor(props) {
     super(props);
@@ -125,8 +126,7 @@ export default class PageSuccess extends PureComponent {
 
   render() {
       const { media, loading, dispatch,adData } = this.props;
-      console.log(adData);
-      console.log(this.state.paySuccessdataSource);
+      const { getFieldDecorator } = this.props.form;
       if((this.state.paySuccessdataSource.length == 0 ) && adData && adData.length>1 && adData[1].imageCdnpath){
          this.state.paySuccessdataSource.push(adData[1]);
          this.state.mediainfo = adData[1];
@@ -189,7 +189,11 @@ export default class PageSuccess extends PureComponent {
                  />
             </Form.Item>
             <Form.Item {...itemcontentLayout}  hasFeedback>
-              <Input type="text" onBlur={this.onBlur.bind(this)} initialValue={this.state.paySuccessdataSource.length>0 ? this.state.paySuccessdataSource[0].linkAddress : "http://"} />
+               {getFieldDecorator('name', {
+                        initialValue:this.props.adData.length>1 ? this.props.adData[1].linkAddress : "http://"
+                    })(
+                  <Input  type="text" onBlur={this.onBlur.bind(this)}/>
+               )}
            </Form.Item>
           </Form>
           <MediaList
