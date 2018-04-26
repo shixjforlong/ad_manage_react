@@ -35,7 +35,6 @@ export default class AddMedia extends PureComponent {
     const { onAdd } = this.props;
     this.props.form.validateFields({ force: true }, (err, values) => {
       if (!err) {
-        console.log(values);
         const fileInfo = {
           mediaName:values.mediaName,
           fileName:this.state.imageList[0].name,
@@ -46,7 +45,6 @@ export default class AddMedia extends PureComponent {
           fileId:"",
           fileSource:"2",
         };
-        console.log(fileInfo);
         onAdd(fileInfo);
       }
     });
@@ -58,16 +56,7 @@ export default class AddMedia extends PureComponent {
   };
 
   componentDidMount(){
-     //向后台服务器请求获取token.
-     this.props.dispatch({
-       type: 'media/getOSSToken',
-       payload: {
-         verbose:100,
-         onSuccess: (result) => {
-             this.setState({token: result})
-         },
-       },
-     });
+
   }
 
   render() {
@@ -75,7 +64,7 @@ export default class AddMedia extends PureComponent {
     const { getFieldDecorator } = form;
 
     const { preview, imageList,visiblePreview} = this.state
-    console.log(imageList);
+
     const propsFile = {
       onRemove: (file) => {
         this.setState(({ imageList }) => {
@@ -151,7 +140,6 @@ export default class AddMedia extends PureComponent {
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       UploadToOss(this, file).then(data => {
-        console.log(data);
         this.setState(({ imageList }) => ({
           imageList: [{
             uid: file.uid,
@@ -168,7 +156,6 @@ export default class AddMedia extends PureComponent {
   }
   //预览图片
   handlePreview = (file) => {
-    console.log(file);
     this.setState({
       preview: file.url || file.thumbUrl,
       visiblePreview: true,
@@ -179,13 +166,15 @@ export default class AddMedia extends PureComponent {
 }
 
 const client = (self) => {
-  const {token} = self.state;
-  console.log(token);
+  let accessKey = sessionStorage.getItem('accessKey');
+  let accessid = sessionStorage.getItem('accessid');
+  let region = sessionStorage.getItem('endpoint');
+  let bucket = sessionStorage.getItem('bucket');
   return new OSS.Wrapper({
-    accessKeyId: token.accessid,
-    accessKeySecret: token.accessKey,
-    region: token.endpoint.split(".")[0],
-    bucket: token.bucket,
+    accessKeyId: accessid,
+    accessKeySecret: accessKey,
+    region: region.split(".")[0],
+    bucket: bucket,
   });
 }
 
@@ -204,7 +193,6 @@ const UploadToOss = (self, file) => {
         payload: {
           fileName:fileName,
           onSuccess: (result) => {
-              console.log(result);
               self.setState({
                 md5: result.etag,
                 length:result.size

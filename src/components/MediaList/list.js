@@ -70,8 +70,9 @@ export default class list extends Component {
     const rowSelection = {
         type:"radio",
         onChange: (selectedRowKeys, selectedRows) => {
-          //console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-          this.state.selectRow = selectedRows;
+          this.setState({
+            selectRow:selectedRows
+          });
         }
     };
 
