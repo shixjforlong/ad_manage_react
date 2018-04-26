@@ -23,13 +23,7 @@ export default class PageSuccess extends PureComponent {
        expandForm: false,
        selectedRowKeys: [],
        paySuccessdataSource:[],//支付成功页面广告数据
-       mediainfo:{
-         adIndex:"1",
-         mediaId:"",
-         mediaName:"",
-         imageCdnpath:"",
-         linkAddress:""
-       }
+       mediainfo:{}
     };
   }
 
@@ -74,17 +68,31 @@ export default class PageSuccess extends PureComponent {
   onBlur = (e) => { //失去焦点时获取光标所在位置
     const { onConfirmTab } = this.props;
     const value = e.target.value;
-    this.state.mediainfo.linkAddress  = value;
-    onConfirmTab(this.state.mediainfo);
+    const media = this.state.mediainfo;
+    media.linkAddress = value;
+    media.adIndex = "1";
+    this.setState({
+        mediainfo:media
+      }, () => {
+        onConfirmTab(this.state.mediainfo);
+     });
   }
   onConfirm = (selectMedia) => {
-     const { onConfirmTab } = this.props;
-     this.state.paySuccessdataSource = selectMedia;
-
-     this.state.mediainfo.mediaId = selectMedia[0]._id;
-     this.state.mediainfo.mediaName = selectMedia[0].mediaName;
-     this.state.mediainfo.imageCdnpath = selectMedia[0].imageCdnpath;
-     onConfirmTab(this.state.mediainfo);
+    const { onConfirmTab } = this.props;
+    const media = {
+      adIndex:"1",
+      mediaId:selectMedia[0]._id,
+      mediaName:selectMedia[0].mediaName,
+      imageCdnpath:selectMedia[0].imageCdnpath,
+      linkAddress:""
+    };
+    //setState 是异步的
+    this.setState({
+        mediainfo:media,
+        paySuccessdataSource:selectMedia
+      }, () => {
+        onConfirmTab(this.state.mediainfo);
+     });
   }
 
   handleAddCancel = flag => {
@@ -119,7 +127,7 @@ export default class PageSuccess extends PureComponent {
       const { media, loading, dispatch,adData } = this.props;
       console.log(adData);
       console.log(this.state.paySuccessdataSource);
-      if((this.state.paySuccessdataSource.length == 0 ) && adData && adData.length>1){
+      if((this.state.paySuccessdataSource.length == 0 ) && adData && adData.length>1 && adData[1].imageCdnpath){
          this.state.paySuccessdataSource.push(adData[1]);
          this.state.mediainfo = adData[1];
       }

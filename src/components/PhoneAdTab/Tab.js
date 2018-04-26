@@ -14,7 +14,6 @@ export default class Tab extends Component {
       }
 
      onConfirmTab1= (mediaInfo) => {
-       console.log(this.state);
          if(!this.state.mediaInfo){
            this.state.mediaInfo = [];
            this.state.mediaInfo.push(mediaInfo);
@@ -32,14 +31,15 @@ export default class Tab extends Component {
          onConfirmTab(this.state.mediaInfo);
      }
 
+     componentDidMount() {
+       if(this.props.adData){
+          this.setState({
+            mediaInfo:this.props.adData
+          });
+       }
+     }
 
      render() {
-       const  {adData}= this.props;
-       if(adData){
-          this.state.mediaInfo = adData;
-       }else{
-         this.state.mediaInfo = [];
-       }
        const itemLayout = {
          labelCol: { span: 5 },
          wrapperCol: { span: 15 },

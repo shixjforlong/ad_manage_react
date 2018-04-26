@@ -98,7 +98,6 @@ export default class phoneAd extends Component {
  };
  //添加手机广告
  handleAdd = values => {
-    console.log(values);
     this.props.dispatch({
       type: 'phoneAd/add',
       payload: {
@@ -164,7 +163,6 @@ export default class phoneAd extends Component {
 
  render() {
   const { phoneAd, loading, dispatch } = this.props;
-  console.log(phoneAd);
   const { data,add} = phoneAd;
   const { selectedRowKeys, modalVisible } = this.state;
   const tableProps = { loading, data, dispatch };

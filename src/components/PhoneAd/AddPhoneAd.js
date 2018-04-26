@@ -21,18 +21,10 @@ export default class AddPhoneAd extends PureComponent {
       payStyle:['2','3']
     }
   }
-
+  //默认值
   static defaultProps = {
-    error: undefined,
+    error: undefined
   };
-
-  static propTypes = {
-    visible: PropTypes.bool.isRequired,
-    error: PropTypes.object,
-    onAdd: PropTypes.func.isRequired,
-    onCancel: PropTypes.func.isRequired
-  };
-
 
   handleAdd = () => {
     const { onAdd } = this.props;
