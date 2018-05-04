@@ -1,7 +1,6 @@
 {
   "entry": "./src/index.js",
   "extraBabelPlugins": [
-    "transform-decorators-legacy",
     "@babel/plugin-proposal-export-default-from",
     "@babel/plugin-syntax-export-namespace-from",
     ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true }]
